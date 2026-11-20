@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cpGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2f6f65"/>
+      <stop offset="100%" stop-color="#1e4e47"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#cpGrad)"/>
+  <path d="M22 24.5C22 21.4624 24.4624 19 27.5 19H36.5C39.5376 19 42 21.4624 42 24.5V33.5C42 36.5376 39.5376 39 36.5 39H31L24.5 44.5V39H27.5C24.4624 39 22 36.5376 22 33.5V24.5Z" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28.5 27.5H35.5M28.5 32.5H33" stroke="#a7f3d0" stroke-width="3" stroke-linecap="round"/>
+</svg>

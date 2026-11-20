@@ -5,10 +5,10 @@ layout: default
 <section class="page-hero py-4 py-lg-5">
   <div class="container-xxl">
     <div class="app-card page-hero-card">
-      <div class="breadcrumb-line"><a href="{{ '/' | relative_url }}">Library</a> <span>/</span> <a href="{{ '/categories/' | relative_url }}">Categories</a> <span>/</span> {% if catpage %}<a href="{{ catpage.url }}">{{ page.category_title }}</a>{% else %}{{ page.category_title }}{% endif %} <span>/</span> {{ page.title }}</div>
+      <div class="breadcrumb-line"><a href="{{ '/' | relative_url }}">Calm Prompts</a> <span>/</span> <a href="{{ '/categories/' | relative_url }}">Categories</a> <span>/</span> {% if catpage %}<a href="{{ catpage.url }}">{{ page.category_title }}</a>{% else %}{{ page.category_title }}{% endif %} <span>/</span> {{ page.title }}</div>
       <div class="row g-4 align-items-end">
         <div class="col-lg-8">
-          <div class="section-label">Prompt item</div>
+          <div class="section-label">Prompt template</div>
           <h1 class="display-title page-title">{{ page.title }}</h1>
           <p class="hero-copy mb-0">{{ page.description }}</p>
           <div class="chip-row mt-3">
@@ -19,12 +19,12 @@ layout: default
         </div>
         <div class="col-lg-4">
           <div class="app-card inset-card h-100">
-            <div class="inset-kicker">Use it</div>
+            <div class="inset-kicker">Quick actions</div>
             <div class="action-stack mt-3">
-              <button id="copyTemplate" class="btn btn-app-primary w-100" type="button">Copy template</button>
-              <a class="btn btn-app-secondary w-100" href="{{ '/builder/?prompt=' | append: page.key | relative_url }}">Use in Builder</a>
+              <button id="copyTemplate" class="btn btn-app-primary w-100" type="button"><i class="bi bi-clipboard me-1"></i> Copy template</button>
+              <a class="btn btn-app-secondary w-100" href="{{ '/builder/?prompt=' | append: page.key | relative_url }}"><i class="bi bi-sliders me-1"></i> Adapt in Builder</a>
             </div>
-            <div id="promptToast" class="copy-toast mt-3" role="status" aria-live="polite">Copied</div>
+            <div id="promptToast" class="copy-toast mt-3" role="status" aria-live="polite">Copied to clipboard</div>
           </div>
         </div>
       </div>
@@ -37,23 +37,23 @@ layout: default
     <div class="row g-4 align-items-start">
       <div class="col-lg-4 col-xl-3">
         <div class="app-card sticky-panel">
-          <div class="section-label">Prompt modes</div>
+          <div class="section-label">Prompt mode</div>
           <div class="seg-toggle seg-toggle-full mt-2" role="tablist" aria-label="Prompt mode">
             <button class="seg-btn is-active" type="button" data-mode="beginner">Beginner</button>
             <button class="seg-btn" type="button" data-mode="power">Power User</button>
           </div>
           <div class="stack-list mt-4">
             <div class="stack-item compact">
-              <div class="stack-item-title">What it is for</div>
-              <p>Use this when you need {{ page.output_type | downcase | default: 'a strong result' }} without starting from scratch.</p>
+              <div class="stack-item-title">When to use</div>
+              <p>Use this template when you need a structured {{ page.output_type | downcase | default: 'result' }} without starting from a blank page.</p>
             </div>
             <div class="stack-item compact">
-              <div class="stack-item-title">Works best with</div>
-              <p>Context, constraints, audience, and the exact output format you want back.</p>
+              <div class="stack-item-title">Beginner vs. Power</div>
+              <p><strong>Beginner</strong> uses plain instructions. <strong>Power User</strong> adds XML tags, constraints, and strict output formatting.</p>
             </div>
             <div class="stack-item compact">
-              <div class="stack-item-title">Common mistake</div>
-              <p>Being too vague about your goal or not giving enough source material to work from.</p>
+              <div class="stack-item-title">Tip for best results</div>
+              <p>Fill in every bracketed field or open the template in the <a href="{{ '/builder/?prompt=' | append: page.key | relative_url }}" class="text-decoration-underline">Prompt Builder</a> to fill fields interactively.</p>
             </div>
           </div>
         </div>
@@ -69,21 +69,30 @@ layout: default
         <div class="row g-4">
           <div class="col-md-6">
             <div class="app-card h-100">
-              <div class="section-label">Example input</div>
-              <pre class="code-block subtle">Context:
-[paste here]
+              <div class="section-label">Sample details to plug in</div>
+              <pre class="code-block subtle">{% if page.example_input %}{{ page.example_input | strip }}{% else %}Context:
+[paste your source notes or text]
 
 Goal:
-[what you want back]
+[what you need back]
 
 Constraints:
-[tone, audience, format, limits]</pre>
+[tone, audience, length, or format]{% endif %}</pre>
             </div>
           </div>
           <div class="col-md-6">
             <div class="app-card h-100">
-              <div class="section-label">Example output</div>
-              <pre class="code-block subtle">A cleaner, more structured response appears here after you adapt the prompt to your real context.</pre>
+              <div class="section-label">How to adapt it</div>
+              <div class="stack-list mt-2">
+                <div class="stack-item compact">
+                  <div class="stack-item-title">1. Replace placeholders</div>
+                  <p>Swap out any <code>[bracketed]</code> fields with your real notes, audience, or constraints.</p>
+                </div>
+                <div class="stack-item compact">
+                  <div class="stack-item-title">2. Switch to Power mode for complex tasks</div>
+                  <p>Use Power User mode when you want tighter formatting rules, tables, or multi-step checks.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

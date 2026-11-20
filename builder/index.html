@@ -1,22 +1,22 @@
 ---
 title: Prompt Builder
-description: Build a finished prompt from the prompts content library.
+description: Build and customize a finished prompt from the Calm Prompts library.
 layout: default
 ---
 <section class="page-hero py-4 py-lg-5">
   <div class="container-xxl">
     <div class="app-card page-hero-card">
-      <div class="breadcrumb-line"><a href="{{ '/' | relative_url }}">Library</a> <span>/</span> Prompt Builder</div>
+      <div class="breadcrumb-line"><a href="{{ '/' | relative_url }}">Calm Prompts</a> <span>/</span> Prompt Builder</div>
       <div class="row g-4 align-items-end">
         <div class="col-lg-8">
-          <div class="section-label">Builder</div>
-          <h1 class="display-title page-title">Turn library templates into finished prompts</h1>
-          <p class="hero-copy mb-0">Choose a category, select a prompt, add your details, and copy a more usable result for work, writing, planning, or learning.</p>
+          <div class="section-label">Interactive Builder</div>
+          <h1 class="display-title page-title">Adapt any template into a finished prompt</h1>
+          <p class="hero-copy mb-0">Pick a category and template, fill in the detected placeholders or paste your notes, and copy a ready-to-run prompt.</p>
         </div>
         <div class="col-lg-4">
           <div class="app-card inset-card h-100">
-            <div class="inset-kicker">Tip</div>
-            <p class="mb-0">The builder works best when you include audience, desired outcome, tone, and any constraints the model should respect.</p>
+            <div class="inset-kicker">How it works</div>
+            <p class="mb-0">Placeholders like <code>[topic]</code> or <code>[paste here]</code> automatically generate individual fields below so nothing gets missed.</p>
           </div>
         </div>
       </div>
@@ -27,22 +27,17 @@ layout: default
 <section class="content-section pb-5">
   <div class="container-xxl">
     <div class="row g-4 align-items-start">
-      <div class="col-xl-4">
+      <div class="col-xl-5">
         <div class="app-card sticky-panel">
-          <div class="section-label">Builder controls</div>
-          <div class="vstack gap-3 mt-3">
+          <div class="section-label">1. Choose template &amp; mode</div>
+          <div class="vstack gap-3 mt-2">
             <div>
               <label class="form-label app-label" for="catSelect">Category</label>
               <select id="catSelect" class="form-select app-select">
-                <option value="all">All</option>
-                <option value="writing">Writing &amp; Communication</option>
-                <option value="work">Work &amp; Career</option>
-                <option value="study">Learning &amp; Studying</option>
-                <option value="life">Life Admin &amp; Decisions</option>
-                <option value="travel">Travel &amp; Planning</option>
-                <option value="food">Food &amp; Fitness</option>
-                <option value="tech">Tech Help</option>
-                <option value="creator">Creator / Content</option>
+                <option value="all">All categories ({{ site.prompts | size }})</option>
+                {% for c in site.prompt_categories %}
+                <option value="{{ c.key }}">{{ c.title }}</option>
+                {% endfor %}
               </select>
             </div>
             <div>
@@ -57,29 +52,35 @@ layout: default
                 <button class="seg-btn" type="button" data-mode="power">Power User</button>
               </div>
             </div>
+
+            <hr class="my-1 opacity-25">
+            <div class="section-label mb-0">2. Fill in template fields</div>
+            <div id="dynamicFields" class="vstack gap-3"></div>
+
             <div>
-              <label class="form-label app-label" for="userInput">Your details</label>
-              <textarea id="userInput" class="form-control app-textarea" placeholder="Paste the email, notes, situation, brief, or source material here"></textarea>
-              <div class="helper-text mt-2">Tip: include who it is for, what you need back, and any formatting or tone constraints.</div>
+              <label class="form-label app-label" for="extraConstraints">Optional extra constraints (tone, length, audience)</label>
+              <input id="extraConstraints" type="text" class="form-control app-select" placeholder="e.g., Keep under 150 words, calm executive tone">
             </div>
-            <div class="d-flex flex-wrap gap-2">
-              <button id="insertExample" class="btn btn-app-secondary" type="button">Insert example</button>
-              <button id="copyBuiltPrompt" class="btn btn-app-primary" type="button">Copy prompt</button>
+
+            <div class="d-flex flex-wrap gap-2 pt-1">
+              <button id="insertExample" class="btn btn-app-secondary" type="button">Fill sample</button>
+              <button id="clearFields" class="btn btn-app-secondary" type="button">Clear</button>
+              <button id="copyBuiltPrompt" class="btn btn-app-primary" type="button"><i class="bi bi-clipboard me-1"></i> Copy prompt</button>
             </div>
-            <div id="builderToast" class="copy-toast" role="status" aria-live="polite">Copied</div>
+            <div id="builderToast" class="copy-toast" role="status" aria-live="polite">Copied to clipboard</div>
           </div>
         </div>
       </div>
-      <div class="col-xl-8">
+      <div class="col-xl-7">
         <div class="code-panel h-100">
           <div class="code-panel-head">
             <div>
-              <span>Generated prompt</span>
+              <span>Finished prompt</span>
               <small id="activeModeNote">Beginner format</small>
             </div>
             <div class="d-flex gap-2">
-              <button id="randomPick" class="btn btn-app-secondary btn-sm" type="button">Random</button>
-              <a class="btn btn-app-secondary btn-sm" href="{{ '/' | relative_url }}">Back to library</a>
+              <button id="randomPick" class="btn btn-app-secondary btn-sm" type="button"><i class="bi bi-shuffle me-1"></i> Random</button>
+              <a id="viewPromptPage" class="btn btn-app-secondary btn-sm" href="{{ '/' | relative_url }}">Template page</a>
             </div>
           </div>
           <pre id="builtPrompt" class="code-block mb-0"></pre>

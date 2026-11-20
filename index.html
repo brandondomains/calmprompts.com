@@ -1,6 +1,6 @@
 ---
-title: prompts
-description: A calm prompt library for work, writing, learning, planning, and everyday AI use.
+title: Calm Prompts
+description: Reusable prompts in a calmer, cleaner workspace. Browse copy-ready prompt templates for writing, work, study, travel, and everyday tasks.
 layout: default
 ---
 {% assign featured_prompts = site.prompts | where: "featured", true %}
@@ -9,7 +9,7 @@ layout: default
     <div class="row g-4 align-items-stretch">
       <div class="col-lg-8">
         <div class="app-card hero-card h-100">
-          <div class="eyebrow">Prompt library dashboard</div>
+          <div class="eyebrow">Calm Prompts · Prompt Library</div>
           <h1 class="display-title">Reusable prompts in a calmer, cleaner workspace.</h1>
           <p class="hero-copy">Browse a structured library of copy-ready prompt templates for writing, work, study, travel, and practical everyday tasks. Search fast, open a prompt, copy it, or adapt it in the builder.</p>
           <div class="d-flex flex-wrap gap-2 mt-4">
@@ -26,7 +26,7 @@ layout: default
               <div class="stat-value">{{ site.prompt_categories | size }}</div>
             </div>
             <div class="stat-card">
-              <div class="stat-label">Modes</div>
+              <div class="stat-label">Formats</div>
               <div class="stat-value">Beginner + Power</div>
             </div>
           </div>
@@ -34,20 +34,20 @@ layout: default
       </div>
       <div class="col-lg-4">
         <div class="app-card sidebar-card h-100">
-          <div class="card-kicker">Workspace view</div>
-          <h2 class="section-title-sm">What this site does well</h2>
+          <div class="card-kicker">Workspace approach</div>
+          <h2 class="section-title-sm">Designed for focus, not hype</h2>
           <div class="stack-list mt-3">
             <div class="stack-item">
-              <div class="stack-item-title">Search-first prompt discovery</div>
-              <p>Find the closest matching prompt by task, format, or intent.</p>
+              <div class="stack-item-title">Search-first discovery</div>
+              <p>Jump straight to the right prompt by task, format, or keyword without scrolling endless feeds.</p>
             </div>
             <div class="stack-item">
-              <div class="stack-item-title">Structured content library</div>
-              <p>Organized by category so the site feels like a working dashboard, not a scattered blog.</p>
+              <div class="stack-item-title">Two modes for every prompt</div>
+              <p>Start with plain-language Beginner prompts or switch to structured XML Power User templates.</p>
             </div>
             <div class="stack-item">
-              <div class="stack-item-title">Builder for adaptation</div>
-              <p>Use the builder to turn templates into prompts you can drop directly into AI tools.</p>
+              <div class="stack-item-title">Interactive Prompt Builder</div>
+              <p>Fill in template placeholders right in your browser and copy a finished prompt in seconds.</p>
             </div>
           </div>
         </div>
@@ -61,11 +61,11 @@ layout: default
     <div class="row g-4">
       <div class="col-xl-3">
         <div class="app-card nav-card h-100">
-          <div class="section-label">Content library</div>
+          <div class="section-label">Library navigation</div>
           <div class="library-nav">
             <a href="{{ '/categories/' | relative_url }}"><span>All categories</span><i class="bi bi-arrow-right"></i></a>
             <a href="{{ '/builder/' | relative_url }}"><span>Prompt builder</span><i class="bi bi-arrow-right"></i></a>
-            {% for c in site.prompt_categories limit: 5 %}
+            {% for c in site.prompt_categories limit: 6 %}
             <a href="{{ c.url }}"><span>{{ c.title }}</span><i class="bi bi-chevron-right"></i></a>
             {% endfor %}
           </div>
@@ -75,9 +75,9 @@ layout: default
         <div class="app-card preview-card">
           <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 align-items-lg-center mb-3">
             <div>
-              <div class="section-label">Featured preview</div>
-              <h2 class="section-title mb-1">See a prompt before you open it</h2>
-              <p class="section-copy mb-0">Switch between Beginner and Power User modes, then copy or open the full item.</p>
+              <div class="section-label">Live workspace preview</div>
+              <h2 class="section-title mb-1">Inspect a template before you open it</h2>
+              <p class="section-copy mb-0">Toggle between Beginner and Power User modes, then copy or open the full template.</p>
             </div>
             <div class="seg-toggle" role="tablist" aria-label="Prompt mode">
               <button class="seg-btn is-active" type="button" data-mode="beginner">Beginner</button>
@@ -108,7 +108,7 @@ layout: default
                   </div>
                 </div>
                 <pre id="previewBox" class="code-block mb-0"></pre>
-                <div id="toast" class="copy-toast" role="status" aria-live="polite">Copied</div>
+                <div id="toast" class="copy-toast mt-2" role="status" aria-live="polite">Copied to clipboard</div>
               </div>
             </div>
           </div>
@@ -122,9 +122,9 @@ layout: default
   <div class="container-xxl">
     <div class="section-heading d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-3 mb-3">
       <div>
-        <div class="section-label">Featured prompts</div>
-        <h2 class="section-title mb-1">Strong starting points for common tasks</h2>
-        <p class="section-copy mb-0">Open a template, copy it directly, or use it as the basis for a better prompt in the builder.</p>
+        <div class="section-label">Featured templates</div>
+        <h2 class="section-title mb-1">Reliable starting points for everyday tasks</h2>
+        <p class="section-copy mb-0">Open any prompt, copy it directly, or adapt its placeholders inside the builder.</p>
       </div>
       <a class="btn btn-app-secondary" href="{{ '/categories/' | relative_url }}">View all categories</a>
     </div>
@@ -152,8 +152,8 @@ layout: default
   <div class="container-xxl">
     <div class="section-heading mb-3">
       <div class="section-label">Browse by category</div>
-      <h2 class="section-title mb-1">A clearer content library</h2>
-      <p class="section-copy mb-0">Pick a category and move through related prompts the way you would navigate a calm dashboard.</p>
+      <h2 class="section-title mb-1">Explore the Calm Prompts library</h2>
+      <p class="section-copy mb-0">Organized into focused workspaces for writing, career, study, travel, creator work, and life admin.</p>
     </div>
     <div class="row g-4">
       {% for c in site.prompt_categories %}
@@ -162,10 +162,40 @@ layout: default
           <span class="category-tile-icon"><i class="bi bi-grid-1x2"></i></span>
           <h3>{{ c.title }}</h3>
           <p>{{ c.description }}</p>
-          <div class="category-meta">{{ site.prompts | where: 'category', c.key | size }} prompts</div>
+          <div class="category-meta mt-3">{{ site.prompts | where: 'category', c.key | size }} prompts</div>
         </a>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="content-section pb-4" id="how-it-works">
+  <div class="container-xxl">
+    <div class="app-card">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5">
+          <div class="section-label">Two ways to prompt</div>
+          <h2 class="section-title">Beginner clarity or Power User structure</h2>
+          <p class="section-copy mb-0">Every template in Calm Prompts ships with two tested versions so you never have to wrestle with prompt engineering unless you want to.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="stack-item h-100">
+                <div class="stack-item-title">Beginner Mode</div>
+                <p>Short, natural-language instructions with clear fill-in-the-blank lines. Ideal for quick answers and everyday tasks.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stack-item h-100">
+                <div class="stack-item-title">Power User Mode</div>
+                <p>Structured with explicit <code>&lt;task&gt;</code>, <code>&lt;constraints&gt;</code>, and <code>&lt;output_format&gt;</code> blocks for repeatable, high-precision outputs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

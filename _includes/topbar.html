@@ -1,18 +1,23 @@
 <header class="site-header sticky-top">
   <nav class="navbar navbar-expand-lg app-navbar">
     <div class="container-xxl align-items-center gap-3">
-      <a class="navbar-brand brand-mark" href="{{ '/' | relative_url }}" aria-label="Prompts home">
-        <span class="brand-icon">P</span>
+      <a class="navbar-brand brand-mark" href="{{ '/' | relative_url }}" aria-label="Calm Prompts home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 7.5C5 5.84315 6.34315 4.5 8 4.5H16C17.6569 4.5 19 5.84315 19 7.5V14.5C19 16.1569 17.6569 17.5 16 17.5H11.5L7 21V17.5H8C6.34315 17.5 5 16.1569 5 14.5V7.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 10H15M9 13.5H13" stroke="#a7f3d0" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
         <span>
-          <span class="brand-title">prompts</span>
-          <span class="brand-subtitle">by Brandon Himpfen</span>
+          <span class="brand-title">Calm Prompts</span>
+          <span class="brand-subtitle">calmprompts.com</span>
         </span>
       </a>
 
       <div class="app-search-wrap order-lg-2 flex-grow-1">
         <form class="app-search" id="globalSearchForm" role="search" action="{{ '/categories/' | relative_url }}">
           <i class="bi bi-search"></i>
-          <input id="globalSearch" name="q" type="search" placeholder="Search prompts, categories, formats, and tasks" autocomplete="off">
+          <input id="globalSearch" name="q" type="search" placeholder="Search Calm Prompts by task, category, or format..." autocomplete="off">
           <button class="search-clear" id="clearGlobalSearch" type="button" aria-label="Clear search">
             <i class="bi bi-x-lg"></i>
           </button>
